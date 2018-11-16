@@ -7,7 +7,7 @@ function ZipSearchField(props) {
     <div>
       <label
         style={{ fontWeight: "bold", fontSize: 20 }}
-        className="badge badge-pill m-2 badge-primary"
+        class="badge badge-pill m-2 badge-primary"
       >
         ZipCode:
       </label>
