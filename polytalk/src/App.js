@@ -7,7 +7,7 @@ function ZipSearchField(props) {
     <div>
       <label
         style={{ fontWeight: "bold", fontSize: 20 }}
-        class="badge badge-pill m-2 badge-primary"
+        className="badge badge-pill m-2 badge-primary"
       >
         ZipCode:
       </label>
@@ -25,7 +25,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      officials: []
+      officials: {}
     };
   }
 
@@ -59,10 +59,10 @@ class App extends Component {
         if (response.status === 200) return response.json();
         else console.log("There was an error");
       })
-      .then(body => {
-        console.log(body);
-        this.setState({ officials: body });
-        console.log(this.officials);
+      .then(data => {
+        console.log(data);
+        this.setState({ officials: data });
+        console.log(this.state.officials);
       });
   }
 
