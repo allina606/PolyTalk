@@ -1,10 +1,10 @@
 import defaultPhoto from "./Images/defaultPhoto.png";
+import React, { Component } from "react";
 
 function imageHeader(props) {
   if (props.officialimg == null) {
-    console.log("SUP");
     return (
-      <div class="">
+      <div>
         <img
           src={defaultPhoto}
           alt="Candidate"
@@ -13,7 +13,6 @@ function imageHeader(props) {
       </div>
     );
   } else {
-    console.log("BRUH");
     return (
       <div>
         <img
