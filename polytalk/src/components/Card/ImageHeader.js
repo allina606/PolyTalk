@@ -1,5 +1,5 @@
 import defaultPhoto from "./Images/defaultPhoto.png";
-import React, { Component } from "react";
+import React from "react";
 
 function imageHeader(props) {
   if (props.officialimg == null) {

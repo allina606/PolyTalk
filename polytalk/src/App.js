@@ -22,10 +22,10 @@ function ZipSearchField(props) {
   );
 }
 
-function data(props) {
+function OfficialName(props) {
   return (
     <div>
-      <p>Candidate : {props.officialName}</p>
+      <p>Candidate : {props.name}</p>
     </div>
   );
 }
@@ -76,12 +76,12 @@ class App extends Component {
   render() {
     var data = [];
     console.log(this.state.data);
-    for (var key in this.state.data.data) {
-      data.push(this.state.data.data[key]);
+    for (var key in this.state.data.officials) {
+      data.push(this.state.data.officials[key]);
     }
     var dataRender = [];
     for (var i = 0; i < data.length; i++) {
-      dataRender.push(<data key={i} officialName={data[i].name} />);
+      dataRender.push(<OfficialName key={i} name={data[i].name} />);
     }
     return (
       <div className="App">
