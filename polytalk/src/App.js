@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import "./components/Card/Card.js";
 import { GOOGLE_KEY } from "./keys.js";
 
 function ZipSearchField(props) {
@@ -21,17 +22,25 @@ function ZipSearchField(props) {
   );
 }
 
+function data(props) {
+  return (
+    <div>
+      <p>Candidate : {props.officialName}</p>
+    </div>
+  );
+}
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      officials: {}
+      data: {}
     };
   }
 
   zipCodeChanged(event) {
     if (event.target.value.length !== 5) {
-      this.setState({ officials: [] });
+      this.setState({ data: [] });
       return (
         <div>
           <p>No Result</p>
@@ -59,18 +68,26 @@ class App extends Component {
         if (response.status === 200) return response.json();
         else console.log("There was an error");
       })
-      .then(data => {
-        console.log(data);
-        this.setState({ officials: data });
-        console.log(this.state.officials);
+      .then(response => {
+        this.setState({ data: response });
       });
   }
 
   render() {
+    var data = [];
+    console.log(this.state.data);
+    for (var key in this.state.data.data) {
+      data.push(this.state.data.data[key]);
+    }
+    var dataRender = [];
+    for (var i = 0; i < data.length; i++) {
+      dataRender.push(<data key={i} officialName={data[i].name} />);
+    }
     return (
       <div className="App">
-        <h1>PoliTalk: Search Representatives</h1>
+        <h1>Enter Zipcode Below</h1>
         <ZipSearchField changeHandler={e => this.zipCodeChanged(e)} />
+        <div>{dataRender}</div>
       </div>
     );
   }
